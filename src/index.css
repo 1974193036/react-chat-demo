@@ -1,0 +1,21 @@
+.err-msg {
+  color: red;
+  padding-left: 10px;
+}
+
+.am-tab-bar{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height:auto;
+  z-index: 999;
+}
+.fixd-header.am-navbar{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+.page-content{
+  padding:45px 5px;
+}
