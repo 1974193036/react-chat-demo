@@ -64,6 +64,8 @@ import {login} from '../../redux/user.redux'
 //     return <h2>hello imooc I love react&redux {this.props.name}</h2>
 //   }
 // }
+
+// 类似以下写法
 // Hello = WrapperHello(Hello)
 
 
@@ -92,6 +94,9 @@ class Login extends React.Component {
   }
 
   handleLogin() {
+    // console.log(this.state)
+    // this.props.login(this.state)
+
     // this.props.state => 变成高阶组件使用
     console.log(this.props.state)
     this.props.login(this.props.state)

@@ -23,13 +23,20 @@ const models = {
     'title': {'type': String},
     // 如果你是boss，还有 公司名称,职位薪资
     'company': {'type': String},
-    'money':{'type': String}
+    'money': {'type': String}
   },
-  chat: {}
+  chat: {
+    'chatid': {'type': String,'require': true},
+    'from': {'type': String, 'require': true},
+    'to': {'type': String, 'require': true},
+    'read': {'type': Boolean, 'default': false},
+    'content': {'type': String, 'require': true, 'default': ''},
+    'create_time': {'type': Number, 'default': new Date().getTime()}
+  }
 }
 
-for(let m in models) {
-  mongoose.model(m,new mongoose.Schema(models[m]))
+for (let m in models) {
+  mongoose.model(m, new mongoose.Schema(models[m]))
 }
 
 module.exports = {

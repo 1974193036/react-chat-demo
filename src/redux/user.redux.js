@@ -66,19 +66,31 @@ export function loadData(userinfo) {
   return {type: LOAD_DATA, payload: userinfo}
 }
 
+// async + await 优化 axios, 异步变成同步写法
+// 写法更加优雅
 export function login({user, pwd}) {
   if (!user || !pwd) {
+    // return {msg: '用户名密码不能为空', type: ERROR_MSG}
     return errorMsg('用户名密码不能为空')
   }
-  return dispatch => {
-    axios.post('/user/login', {user, pwd}).then(res => {
-      if (res.status === 200 && res.data.code === 0) {
-        // dispatch(registerSuccess({user, pwd, type}))
-        dispatch(authSuccess(res.data.data))
-      } else {
-        dispatch(errorMsg(res.data.msg))
-      }
-    })
+  // return dispatch => {
+  //   axios.post('/user/login', {user, pwd}).then(res => {
+  //     if (res.status === 200 && res.data.code === 0) {
+  //       // dispatch(registerSuccess({user, pwd, type}))
+  //       dispatch(authSuccess(res.data.data))
+  //     } else {
+  //       dispatch(errorMsg(res.data.msg))
+  //     }
+  //   })
+  // }
+  return async dispatch => {
+    const res = await axios.post('/user/login', {user, pwd})
+    if (res.status === 200 && res.data.code === 0) {
+      // dispatch(registerSuccess({user, pwd, type}))
+      dispatch(authSuccess(res.data.data))
+    } else {
+      dispatch(errorMsg(res.data.msg))
+    }
   }
 }
 

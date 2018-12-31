@@ -10,3 +10,9 @@ export function getRedirectPath({type, avatar}) {
   }
   return url
 }
+
+
+//  获取chatid
+export function getChatId(userId, targetId) {
+  return [userId, targetId].sort().join('-')
+}
